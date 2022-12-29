@@ -23,37 +23,33 @@ const Header = (props) => {
     "Fairy",
   ];
 
-  const handleSearch = (e) => {
-    props.setPesquisa(e.target.value);
+  const onChangeId = (e) => {
+    props.setBuscaId(e.target.value)
   };
 
-   const handleIdSearch = (e) => {
-    props.setIdFilter(e.target.value);
+  const onChangeNome = (e) => {
+    props.setBuscaNome(e.target.value)
   };
+
+  const onChangeOrdenação = (e) => {
+    props.setOrdenaAlfabeto(e.target.value)
+  }
+
+  const onChangeTipo = (e) => {
+    props.setOrdenarTipo(e.target.value)
+  }
+
 
   return (
     <Container>
-        <input
-        type="number"
-        placeholder="Buscar por id"
-        onChange={handleIdSearch}
-        value={props.idFilter}
-      />
-      <input
-        type="text"
-        placeholder="Buscar por nome"
-        onChange={handleSearch}
-        value={props.pesquisa}
-      />
-      <select>
+      <input type="number" placeholder="Buscar por id" value={props.buscaId} onChange={onChangeId} />
+      <input type="text" placeholder="Buscar por nome" value ={props.buscaNome} onChange={onChangeNome}/>
+      <select value={props.OrdenaAlfabeto} onChange={onChangeOrdenação}>
         <option value="">Ordenar</option>
-        <option value="">Crescente</option>
-        <option value="">Decrescente</option>
+        <option value="crescente">Crescente</option>
+        <option value="decrescente">Decrescente</option>
       </select>
-      <select
-        name="tipo"
-        id="tipo"
-          >
+      <select name="tipo" id="tipo" value={props.ordenarTipo} onChange={onChangeTipo} >
         <option value="">Selecione um tipo</option>
         {pokemontypesArray.map((type) => {
           return (
